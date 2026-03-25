@@ -465,17 +465,17 @@
   // ── Access codes ───────────────────────────────────────────────────────────
   // Format: 'CODE': 'Client name (for logging)'
   const VALID_CODES = {
-    'CHU-LILLE-2026':     'CHU de Lille',
-    'CHU-ROUBAIX-2026':   'CHU de Roubaix',
-    'NNL-TEST-2026':      'Test interne NNL',
-    // Ajouter un code par installation : 'NOM-HOPITAL-ANNEE': 'Nom complet'
+    'NNLSOLUTION@2026': 'NordicNeuroLab Client',
   };
 
   // Inject logo into gate screen (same base64 as header)
   window.addEventListener('DOMContentLoaded', () => {
     const headerImg = document.querySelector('.header img');
     const gateImg   = document.getElementById('gate-logo');
-    if (headerImg && gateImg) gateImg.src = headerImg.src;
+    if (headerImg && gateImg) {
+      gateImg.src = headerImg.src;
+      gateImg.style.filter = 'none';  // show original colors on white background
+    }
 
     // Check URL param on load
     const urlCode = new URLSearchParams(window.location.search).get('code');
