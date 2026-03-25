@@ -221,7 +221,7 @@
     <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#1F4E79; font-weight:400; margin-bottom:8px;">Accès au questionnaire</h2>
     <p style="font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6;">Saisissez le code d'accès reçu par email pour accéder au questionnaire de satisfaction.<br><em>Enter the access code received by email.</em></p>
     <div id="gate-field" style="margin-bottom:16px;">
-      <input type="text" id="gate-code-input" placeholder="Ex : NNL-HOPITAL-2026" 
+      <input type="text" id="gate-code-input" placeholder="Enter your access code" 
         style="width:100%; padding:12px 16px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:15px; font-family:'DM Sans',sans-serif; text-align:center; letter-spacing:0.05em; text-transform:uppercase; outline:none;"
         onkeydown="if(event.key==='Enter') checkCode()">
     </div>
@@ -463,43 +463,69 @@
 
 <script>
   // ── Access codes ───────────────────────────────────────────────────────────
-  // Format: 'CODE': 'Client name (for logging)'
-  const VALID_CODES = {
-    'NNLSOLUTION@2026': 'NordicNeuroLab Client',
-  };
-
-  // Inject logo into gate screen (same base64 as header)
+  // ── Inject logo into gate screen ──────────────────────────────────────────
   window.addEventListener('DOMContentLoaded', () => {
     const headerImg = document.querySelector('#main-content img');
     const gateImg   = document.getElementById('gate-logo');
     if (headerImg && gateImg) {
       gateImg.src = headerImg.src;
-      gateImg.style.filter = 'none';  // show original colors on white background
+      gateImg.style.filter = 'none';
     }
 
-    // Check URL param on load
-    const urlCode = new URLSearchParams(window.location.search).get('code');
-    if (urlCode && VALID_CODES[urlCode.toUpperCase()]) {
-      unlockForm(urlCode.toUpperCase());
+    // Auto-validate account ID from URL param on load
+    const accountId = new URLSearchParams(window.location.search).get('account');
+    if (accountId) {
+      document.getElementById('gate-code-input').value = accountId;
+      checkCode();
     }
   });
 
-  function checkCode() {
-    const input = document.getElementById('gate-code-input').value.trim().toUpperCase();
-    if (VALID_CODES[input]) {
-      unlockForm(input);
-    } else {
-      document.getElementById('gate-error').style.display = 'block';
-      document.getElementById('gate-code-input').style.borderColor = '#C00000';
+  async function checkCode() {
+    const input = document.getElementById('gate-code-input').value.trim();
+    if (!input) {
+      showGateError('Veuillez entrer un code. / Please enter a code.');
+      return;
+    }
+
+    const btn = document.querySelector('#access-gate button');
+    btn.textContent = 'Vérification...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`/api/validate?id=${encodeURIComponent(input)}`);
+      if (res.ok) {
+        const data = await res.json();
+        unlockForm(input, data.name);
+      } else if (res.status === 404) {
+        showGateError('Code invalide. / Invalid code.');
+      } else {
+        showGateError('Erreur de connexion. Réessayez. / Connection error. Please retry.');
+      }
+    } catch (err) {
+      showGateError('Erreur de connexion. Réessayez. / Connection error. Please retry.');
+    } finally {
+      btn.textContent = 'Accéder / Access';
+      btn.disabled = false;
     }
   }
 
-  function unlockForm(code) {
+  function showGateError(msg) {
+    const err = document.getElementById('gate-error');
+    err.textContent = msg;
+    err.style.display = 'block';
+    document.getElementById('gate-code-input').style.borderColor = '#C00000';
+  }
+
+  function unlockForm(accountId, accountName) {
     document.getElementById('access-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
-    // Store validated code for submission
-    window._accessCode = code;
-    window._clientName = VALID_CODES[code];
+    window._accountId   = accountId;
+    window._accountName = accountName;
+    // Pre-fill hospital if known
+    if (accountName) {
+      const hospitalInput = document.getElementById('inp-hospital');
+      if (!hospitalInput.value) hospitalInput.value = accountName;
+    }
   }
 
   // ── State ──────────────────────────────────────────────────────────────────
@@ -514,10 +540,6 @@
     "Étape 4 sur 5 — Options avancées",
     "Étape 5 sur 5 — Feedback"
   ];
-
-  // ── Power Automate webhook URL ─────────────────────────────────────────────
-  // REMPLACER par ton URL Power Automate après configuration
-  const WEBHOOK_URL = "POWER_AUTOMATE_WEBHOOK_URL";
 
   // ── Toggle issue detail field ──────────────────────────────────────────────
   function toggleIssueDetail(show) {
@@ -649,24 +671,24 @@
     const scoreGlobal = ((ratings.soft + ratings.hw + ratings.opt) / 3).toFixed(2);
 
     return {
-      timestamp: now.toISOString(),
-      mois: month,
-      code_acces: window._accessCode || '',
-      client_identifie: window._clientName || '',
-      nom_prenom: document.getElementById('inp-name').value.trim(),
-      hopital: document.getElementById('inp-hospital').value.trim(),
-      fonction: document.getElementById('inp-role').value,
-      note_logiciel: ratings.soft,
-      note_materiel: ratings.hw,
-      note_options: ratings.opt,
-      score_global: parseFloat(scoreGlobal),
+      account_id:            window._accountId   || '',
+      client_identifie:      window._accountName || '',
+      timestamp:             now.toISOString(),
+      mois:                  month,
+      nom_prenom:            document.getElementById('inp-name').value.trim(),
+      hopital:               document.getElementById('inp-hospital').value.trim(),
+      fonction:              document.getElementById('inp-role').value,
+      note_logiciel:         ratings.soft,
+      note_materiel:         ratings.hw,
+      note_options:          ratings.opt,
+      score_global:          parseFloat(scoreGlobal),
       frequence_utilisation: document.querySelector('input[name="freq"]:checked')?.value || '',
-      problemes_techniques: document.querySelector('input[name="issues"]:checked')?.value || '',
-      detail_probleme: document.getElementById('inp-issue-detail').value.trim(),
-      options_utilisees: opts,
-      feedback_qualitatif: document.getElementById('inp-feedback').value.trim(),
-      besoin_formation: document.querySelector('input[name="training"]:checked')?.value || '',
-      csat_satisfait: (ratings.soft >= 4 && ratings.hw >= 4 && ratings.opt >= 4) ? 1 : 0
+      problemes_techniques:  document.querySelector('input[name="issues"]:checked')?.value || '',
+      detail_probleme:       document.getElementById('inp-issue-detail').value.trim(),
+      options_utilisees:     opts,
+      feedback_qualitatif:   document.getElementById('inp-feedback').value.trim(),
+      besoin_formation:      document.querySelector('input[name="training"]:checked')?.value || '',
+      csat_satisfait:        (ratings.soft >= 4 && ratings.hw >= 4 && ratings.opt >= 4) ? 1 : 0
     };
   }
 
@@ -677,24 +699,42 @@
     const btn = document.getElementById('submit-btn');
     btn.classList.add('sending');
     btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
 
     const data = collectData();
 
     try {
-      if (WEBHOOK_URL !== "POWER_AUTOMATE_WEBHOOK_URL") {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+      const res = await fetch('/api/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        showSuccess();
+      } else {
+        const err = await res.json().catch(() => ({}));
+        showSubmitError(err.error || 'Submission failed. Please try again.');
       }
-      // Show success regardless (for now — webhook optional)
-      showSuccess();
     } catch (err) {
-      // Even if webhook fails, show success (data logged in console)
-      console.log('Form data:', JSON.stringify(data, null, 2));
-      showSuccess();
+      showSubmitError('Connection error. Please check your internet and try again.');
     }
+  }
+
+  function showSubmitError(msg) {
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Envoyer / Submit';
+    btn.disabled = false;
+    btn.classList.remove('sending');
+    // Show error below the button
+    let errEl = document.getElementById('submit-error');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.id = 'submit-error';
+      errEl.style.cssText = 'color:#C00000;font-size:13px;margin-top:8px;text-align:center;';
+      btn.parentNode.insertBefore(errEl, btn.nextSibling);
+    }
+    errEl.textContent = msg;
   }
 
   function showSuccess() {
