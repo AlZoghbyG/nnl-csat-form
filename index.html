@@ -646,23 +646,22 @@
 
     return {
       timestamp: now.toISOString(),
-      mois: month,
-      code_acces: window._accessCode || '',
-      client_identifie: window._clientName || '',
-      nom_prenom: document.getElementById('inp-name').value.trim(),
-      hopital: document.getElementById('inp-hospital').value.trim(),
-      fonction: document.getElementById('inp-role').value,
-      note_logiciel: ratings.soft,
-      note_materiel: ratings.hw,
-      note_options: ratings.opt,
-      score_global: parseFloat(scoreGlobal),
-      frequence_utilisation: document.querySelector('input[name="freq"]:checked')?.value || '',
-      problemes_techniques: document.querySelector('input[name="issues"]:checked')?.value || '',
-      detail_probleme: document.getElementById('inp-issue-detail').value.trim(),
-      options_utilisees: opts,
-      feedback_qualitatif: document.getElementById('inp-feedback').value.trim(),
-      besoin_formation: document.querySelector('input[name="training"]:checked')?.value || '',
-      csat_satisfait: (ratings.soft >= 4 && ratings.hw >= 4 && ratings.opt >= 4) ? 1 : 0
+      month__c: month,
+      access_code__c: window._accessCode || '',
+      respondent_name__c: document.getElementById('inp-name').value.trim(),
+      hospital__c: document.getElementById('inp-hospital').value.trim(),
+      role__c: document.getElementById('inp-role').value,
+      software_rating__c: ratings.soft,
+      hardware_rating__c: ratings.hw,
+      options_rating__c: ratings.opt,
+      global_score__c: parseFloat(scoreGlobal),
+      usage_frequency__c: document.querySelector('input[name="freq"]:checked')?.value || '',
+      technical_issues__c: document.querySelector('input[name="issues"]:checked')?.value || '',
+      issue_detail__c: document.getElementById('inp-issue-detail').value.trim(),
+      options_used__c: opts,
+      qualitative_feedback__c: document.getElementById('inp-feedback').value.trim(),
+      training_needs__c: document.querySelector('input[name="training"]:checked')?.value || '',
+      satisfied__c: (ratings.soft >= 4 && ratings.hw >= 4 && ratings.opt >= 4) ? 1 : 0
     };
   }
 
