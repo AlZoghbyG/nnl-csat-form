@@ -218,20 +218,20 @@
 <div id="access-gate" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;">
   <div style="background:#fff; border-radius:16px; box-shadow:0 4px 32px rgba(31,78,121,0.12); padding:40px 32px; max-width:420px; width:100%; text-align:center; border:1px solid #e2e8f0;">
     <img id="gate-logo" src="" alt="NordicNeuroLab" style="height:48px; width:auto; margin-bottom:24px; display:block; margin-left:auto; margin-right:auto;">
-    <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#1F4E79; font-weight:400; margin-bottom:8px;">Accès au questionnaire</h2>
-    <p style="font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6;">Saisissez le code d'accès reçu par email pour accéder au questionnaire de satisfaction.<br><em>Enter the access code received by email.</em></p>
+    <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#1F4E79; font-weight:400; margin-bottom:8px;">Survey Access</h2>
+    <p style="font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6;">Enter the access code received by email to access the satisfaction survey.</p>
     <div id="gate-field" style="margin-bottom:16px;">
       <input type="text" id="gate-code-input" placeholder="Ex : NNL-HOPITAL-2026" 
         style="width:100%; padding:12px 16px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:15px; font-family:'DM Sans',sans-serif; text-align:center; letter-spacing:0.05em; text-transform:uppercase; outline:none;"
         onkeydown="if(event.key==='Enter') checkCode()">
     </div>
     <div id="gate-error" style="display:none; font-size:12px; color:#C00000; margin-bottom:12px;">
-      Code invalide. Vérifiez le code reçu par email. / Invalid code. Please check the code received by email.
+      Invalid code. Please check the code received by email.
     </div>
     <button onclick="checkCode()" style="width:100%; padding:12px; background:#2E75B6; color:white; border:none; border-radius:8px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; cursor:pointer;">
-      Accéder au formulaire →
+      Access the survey →
     </button>
-    <p style="font-size:11px; color:#9ca3af; margin-top:16px;">NordicNeuroLab — Confidentiel</p>
+    <p style="font-size:11px; color:#9ca3af; margin-top:16px;">NordicNeuroLab — Confidential</p>
   </div>
 </div>
 
@@ -252,7 +252,7 @@
     <div class="step-dot" id="dot-4"></div>
     <div class="step-dot" id="dot-5"></div>
   </div>
-  <div class="progress-label" id="progress-label">Étape 1 sur 5 — Identification</div>
+  <div class="progress-label" id="progress-label">Step 1 of 5 — Identification</div>
 </div>
 
 <div class="main">
@@ -262,36 +262,36 @@
     <div class="card">
       <div class="section-tag">Identification</div>
       <h2 class="card-title">Qui êtes-vous ?</h2>
-      <p class="card-desc">Ces informations nous permettent d'associer votre retour à votre installation. / This information helps us link your feedback to your installation.</p>
+      <p class="card-desc">This information helps us link your feedback to your installation.</p>
 
       <div class="field" id="field-name">
-        <label>Nom et prénom <span class="req">*</span> <span class="en">/ Full name</span></label>
+        <label>Full name <span class="req">*</span></label>
         <input type="text" id="inp-name" placeholder="Ex : Marie Dupont" autocomplete="name">
         <div class="error-msg">Ce champ est obligatoire / This field is required</div>
       </div>
 
       <div class="field" id="field-hospital">
-        <label>Hôpital / Établissement <span class="req">*</span> <span class="en">/ Hospital or facility name</span></label>
-        <input type="text" id="inp-hospital" placeholder="Ex : CHU de Lyon">
+        <label>Hospital or facility name <span class="req">*</span></label>
+        <input type="text" id="inp-hospital" placeholder="e.g. General Hospital">
         <div class="error-msg">Ce champ est obligatoire / This field is required</div>
       </div>
 
       <div class="field" id="field-role">
-        <label>Votre fonction <span class="req">*</span> <span class="en">/ Your role</span></label>
+        <label>Your role <span class="req">*</span></label>
         <select id="inp-role">
-          <option value="">— Sélectionner / Select —</option>
-          <option>Manipulateur(trice) radio / Radiographer</option>
-          <option>Radiologue / Radiologist</option>
-          <option>Technicien(ne) biomédical(e) / Biomedical technician</option>
-          <option>Cadre de santé / Healthcare manager</option>
-          <option>Autre / Other</option>
+          <option value="">— Select —</option>
+          <option>Radiographer</option>
+          <option>Radiologist</option>
+          <option>Biomedical technician</option>
+          <option>Healthcare manager</option>
+          <option>Other</option>
         </select>
-        <div class="error-msg">Veuillez sélectionner votre fonction / Please select your role</div>
+        <div class="error-msg">Please select your role</div>
       </div>
 
       <div class="nav">
         <div></div>
-        <button class="btn btn-primary" onclick="nextStep(1)">Suivant / Next →</button>
+        <button class="btn btn-primary" onclick="nextStep(1)">Next →</button>
       </div>
     </div>
   </div>
@@ -299,12 +299,12 @@
   <!-- ── STEP 2: Logiciel ── -->
   <div class="step" id="step-2">
     <div class="card">
-      <div class="section-tag">Interface logicielle</div>
-      <h2 class="card-title">Logiciel nCP</h2>
-      <p class="card-desc">Évaluez votre expérience avec l'interface logicielle. / Rate your experience with the software interface.</p>
+      <div class="section-tag">Software Interface</div>
+      <h2 class="card-title">nCP Software</h2>
+      <p class="card-desc">Rate your experience with the software interface.</p>
 
       <div class="field" id="field-score-soft">
-        <label>Facilité d'utilisation du logiciel nCP <span class="req">*</span></label>
+        <label>Ease of use — nCP Software <span class="req">*</span></label>
         <div class="star-group" id="stars-soft">
           <button class="star-btn" data-val="1" onclick="setRating('soft',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('soft',2)">★</button>
@@ -312,24 +312,24 @@
           <button class="star-btn" data-val="4" onclick="setRating('soft',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('soft',5)">★</button>
         </div>
-        <div class="star-labels"><span>Très insatisfait</span><span>Très satisfait</span></div>
-        <div class="error-msg" style="margin-top:28px">Veuillez attribuer une note / Please select a rating</div>
+        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
       </div>
 
       <div class="field" id="field-freq">
-        <label>Fréquence d'utilisation <span class="req">*</span> <span class="en">/ Usage frequency</span></label>
+        <label>Usage frequency <span class="req">*</span></label>
         <div class="choice-group" id="freq-group">
-          <label class="choice-item"><input type="radio" name="freq" value="Quotidienne / Daily"> Quotidienne / Daily</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Plusieurs fois par semaine / Several times a week"> Plusieurs fois par semaine / Several times a week</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Occasionnelle / Occasional"> Occasionnelle / Occasional</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Rarement / Rarely"> Rarement / Rarely</label>
+          <label class="choice-item"><input type="radio" name="freq" value="Daily"> Daily</label>
+          <label class="choice-item"><input type="radio" name="freq" value="Several times a week"> Several times a week</label>
+          <label class="choice-item"><input type="radio" name="freq" value="Occasional"> Occasional</label>
+          <label class="choice-item"><input type="radio" name="freq" value="Rarely"> Rarely</label>
         </div>
-        <div class="error-msg">Veuillez sélectionner une option</div>
+        <div class="error-msg">Please select an option</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(2)">← Retour</button>
-        <button class="btn btn-primary" onclick="nextStep(2)">Suivant / Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(2)">Next →</button>
       </div>
     </div>
   </div>
@@ -337,12 +337,12 @@
   <!-- ── STEP 3: Matériel ── -->
   <div class="step" id="step-3">
     <div class="card">
-      <div class="section-tag">Matériel</div>
-      <h2 class="card-title">Matériel installé</h2>
-      <p class="card-desc">Boîtier d'alimentation, écran LCD, PC avec écran tactile. / Power supply unit, LCD screen, touchscreen PC.</p>
+      <div class="section-tag">Hardware</div>
+      <h2 class="card-title">Installed Hardware</h2>
+      <p class="card-desc">Power supply unit, LCD screen, touchscreen PC.</p>
 
       <div class="field" id="field-score-hw">
-        <label>Satisfaction avec le matériel installé <span class="req">*</span></label>
+        <label>Satisfaction with installed hardware <span class="req">*</span></label>
         <div class="star-group" id="stars-hw">
           <button class="star-btn" data-val="1" onclick="setRating('hw',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('hw',2)">★</button>
@@ -350,30 +350,30 @@
           <button class="star-btn" data-val="4" onclick="setRating('hw',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('hw',5)">★</button>
         </div>
-        <div class="star-labels"><span>Très insatisfait</span><span>Très satisfait</span></div>
-        <div class="error-msg" style="margin-top:28px">Veuillez attribuer une note / Please select a rating</div>
+        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
       </div>
 
       <div class="field" id="field-issues">
-        <label>Problèmes techniques depuis l'installation <span class="req">*</span> <span class="en">/ Technical issues since installation</span></label>
+        <label>Technical issues since installation <span class="req">*</span></label>
         <div class="choice-group">
-          <label class="choice-item"><input type="radio" name="issues" value="Aucun problème / No issues" onchange="toggleIssueDetail(false)"> Aucun problème / No issues</label>
-          <label class="choice-item"><input type="radio" name="issues" value="1 incident mineur / 1 minor incident" onchange="toggleIssueDetail(true)"> 1 incident mineur / 1 minor incident</label>
-          <label class="choice-item"><input type="radio" name="issues" value="Plusieurs incidents / Multiple incidents" onchange="toggleIssueDetail(true)"> Plusieurs incidents / Multiple incidents</label>
-          <label class="choice-item"><input type="radio" name="issues" value="Problème non résolu / Unresolved issue" onchange="toggleIssueDetail(true)"> Problème non résolu / Unresolved issue</label>
+          <label class="choice-item"><input type="radio" name="issues" value="No issues" onchange="toggleIssueDetail(false)"> No issues</label>
+          <label class="choice-item"><input type="radio" name="issues" value="1 minor incident" onchange="toggleIssueDetail(true)"> 1 minor incident</label>
+          <label class="choice-item"><input type="radio" name="issues" value="Multiple incidents" onchange="toggleIssueDetail(true)"> Multiple incidents</label>
+          <label class="choice-item"><input type="radio" name="issues" value="Unresolved issue" onchange="toggleIssueDetail(true)"> Unresolved issue</label>
         </div>
-        <div class="error-msg">Veuillez sélectionner une option</div>
+        <div class="error-msg">Please select an option</div>
       </div>
 
       <div class="field" id="field-issue-detail" style="display:none; animation: fadeIn 0.3s ease;">
-        <label>Décrivez le problème rencontré <span class="req">*</span> <span class="en">/ Please describe the issue</span></label>
-        <textarea id="inp-issue-detail" placeholder="Décrivez le problème, quand il s'est produit, et s'il a été résolu... / Describe the issue, when it occurred, and whether it was resolved..."></textarea>
-        <div class="error-msg">Merci de décrire le problème / Please describe the issue</div>
+        <label>Please describe the issue <span class="req">*</span></label>
+        <textarea id="inp-issue-detail" placeholder="Describe the issue, when it occurred, and whether it was resolved..."></textarea>
+        <div class="error-msg">Please describe the issue</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(3)">← Retour</button>
-        <button class="btn btn-primary" onclick="nextStep(3)">Suivant / Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(3)">Next →</button>
       </div>
     </div>
   </div>
@@ -381,12 +381,12 @@
   <!-- ── STEP 4: Options ── -->
   <div class="step" id="step-4">
     <div class="card">
-      <div class="section-tag">Options avancées</div>
-      <h2 class="card-title">Options de la solution</h2>
-      <p class="card-desc">Apnée, textes personnalisés, durée d'examen. / Apnea commands, custom text, exam duration.</p>
+      <div class="section-tag">Advanced Options</div>
+      <h2 class="card-title">Solution Options</h2>
+      <p class="card-desc">Apnea commands, custom text, exam duration.</p>
 
       <div class="field" id="field-score-opt">
-        <label>Satisfaction avec les options disponibles <span class="req">*</span></label>
+        <label>Satisfaction with available options <span class="req">*</span></label>
         <div class="star-group" id="stars-opt">
           <button class="star-btn" data-val="1" onclick="setRating('opt',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('opt',2)">★</button>
@@ -394,23 +394,23 @@
           <button class="star-btn" data-val="4" onclick="setRating('opt',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('opt',5)">★</button>
         </div>
-        <div class="star-labels"><span>Très insatisfait</span><span>Très satisfait</span></div>
-        <div class="error-msg" style="margin-top:28px">Veuillez attribuer une note / Please select a rating</div>
+        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
       </div>
 
       <div class="field">
-        <label>Options utilisées régulièrement <span class="en">/ Options used regularly</span></label>
+        <label>Options used regularly</label>
         <div class="choice-group">
-          <label class="choice-item"><input type="checkbox" name="opts" value="Commandes apnée / Apnea commands"> Commandes apnée / Apnea commands</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="Textes personnalisés / Custom text"> Textes personnalisés / Custom text</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="Durée d'examen / Exam duration"> Durée d'examen / Exam duration</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="Aucune à ce jour / None so far"> Aucune à ce jour / None so far</label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Apnea commands"> Apnea commands</label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Custom text"> Custom text</label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Exam duration"> Exam duration</label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="None so far"> None so far</label>
         </div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(4)">← Retour</button>
-        <button class="btn btn-primary" onclick="nextStep(4)">Suivant / Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(4)">Next →</button>
       </div>
     </div>
   </div>
@@ -418,28 +418,28 @@
   <!-- ── STEP 5: Feedback ── -->
   <div class="step" id="step-5">
     <div class="card">
-      <div class="section-tag">Feedback qualitatif</div>
-      <h2 class="card-title">Votre retour</h2>
-      <p class="card-desc">Partagez votre expérience librement. Vos commentaires nous aident à améliorer la solution et notre accompagnement. / Share your experience freely.</p>
+      <div class="section-tag">Qualitative Feedback</div>
+      <h2 class="card-title">Your Feedback</h2>
+      <p class="card-desc">Share your experience freely. Your comments help us improve the solution and our support.</p>
 
       <div class="field">
-        <label>Qu'est-ce qui pourrait être amélioré ? <span class="en">/ What could be improved?</span></label>
-        <textarea id="inp-feedback" placeholder="Décrivez librement... / Feel free to describe..."></textarea>
+        <label>What could be improved?</label>
+        <textarea id="inp-feedback" placeholder="Feel free to describe..."></textarea>
       </div>
 
       <div class="field" id="field-training">
-        <label>Besoin d'une formation complémentaire ? <span class="req">*</span> <span class="en">/ Additional training needed?</span></label>
+        <label>Additional training needed? <span class="req">*</span></label>
         <div class="choice-group">
-          <label class="choice-item"><input type="radio" name="training" value="Oui, c'est nécessaire / Yes, needed"> Oui, c'est nécessaire / Yes, needed</label>
-          <label class="choice-item"><input type="radio" name="training" value="Peut-être / Maybe"> Peut-être / Maybe</label>
-          <label class="choice-item"><input type="radio" name="training" value="Non, nous sommes autonomes / No, we're autonomous"> Non, nous sommes autonomes / No, we're autonomous</label>
+          <label class="choice-item"><input type="radio" name="training" value="Yes, needed"> Yes, needed</label>
+          <label class="choice-item"><input type="radio" name="training" value="Maybe"> Maybe</label>
+          <label class="choice-item"><input type="radio" name="training" value="No, we're autonomous"> No, we're autonomous</label>
         </div>
-        <div class="error-msg">Veuillez sélectionner une option</div>
+        <div class="error-msg">Please select an option</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(5)">← Retour</button>
-        <button class="btn btn-primary" id="submit-btn" onclick="submitForm()">Envoyer / Submit ✓</button>
+        <button class="btn btn-secondary" onclick="prevStep(5)">← Back</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitForm()">Submit ✓</button>
       </div>
     </div>
   </div>
@@ -448,17 +448,16 @@
   <div class="step" id="step-success">
     <div class="card success-card">
       <div class="success-icon">✓</div>
-      <h2>Merci pour votre retour !</h2>
+      <h2>Thank you for your feedback!</h2>
       <p>
-        Vos réponses ont bien été enregistrées. Notre équipe Customer Success les analysera et reviendra vers vous si nécessaire.<br><br>
-        <em>Thank you! Your responses have been recorded. Our Customer Success team will review them and follow up if needed.</em>
+        Your responses have been recorded. Our Customer Success team will review them and follow up if needed.
       </p>
     </div>
   </div>
 
 </div>
 
-<div class="footer">NordicNeuroLab — Customer Success Engineering — Confidentiel / Confidential</div>
+<div class="footer">NordicNeuroLab — Customer Success Engineering — Confidential</div>
 </div>
 
 <script>
@@ -508,15 +507,15 @@
   const totalSteps = 5;
 
   const stepLabels = [
-    "Étape 1 sur 5 — Identification",
-    "Étape 2 sur 5 — Interface logicielle",
-    "Étape 3 sur 5 — Matériel",
-    "Étape 4 sur 5 — Options avancées",
-    "Étape 5 sur 5 — Feedback"
+    "Step 1 of 5 — Identification",
+    "Step 2 of 5 — Software Interface",
+    "Step 3 of 5 — Hardware",
+    "Step 4 of 5 — Advanced Options",
+    "Step 5 of 5 — Feedback"
   ];
 
   // ── Power Automate webhook URL ─────────────────────────────────────────────
-  // REMPLACER par ton URL Power Automate après configuration
+  // Replace with your Power Automate URL after setup
   const WEBHOOK_URL = "POWER_AUTOMATE_WEBHOOK_URL";
 
   // ── Toggle issue detail field ──────────────────────────────────────────────
@@ -600,7 +599,7 @@
       if (!issues) valid = false;
 
       // If issue selected (not "Aucun"), detail is required
-      if (issues && issues.value !== 'Aucun problème / No issues') {
+      if (issues && issues.value !== 'No issues') {
         const detail = document.getElementById('inp-issue-detail').value.trim();
         document.getElementById('field-issue-detail').classList.toggle('has-error', !detail);
         if (!detail) valid = false;
@@ -645,7 +644,7 @@
   function collectData() {
     const opts = [...document.querySelectorAll('input[name="opts"]:checked')].map(c => c.value).join('; ');
     const now = new Date();
-    const month = ['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'][now.getMonth()];
+    const month = ['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'][now.getMonth()];
     const scoreGlobal = ((ratings.soft + ratings.hw + ratings.opt) / 3).toFixed(2);
 
     return {
@@ -676,7 +675,7 @@
 
     const btn = document.getElementById('submit-btn');
     btn.classList.add('sending');
-    btn.textContent = 'Envoi en cours...';
+    btn.textContent = 'Sending...';
 
     const data = collectData();
 
