@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 
     // Optional fields — only included once created in SF object
     const optional = {
-      Global_Score__c:        data.global_score__c,
+      Global__c:              data.global_score__c,
       Software_Rating__c:     data.software_rating__c,
       Hardware_Rating__c:     data.hardware_rating__c,
       Options_Rating__c:      data.options_rating__c,
@@ -54,11 +54,12 @@ export default async function handler(req, res) {
       Usage_Frequency__c:     data.usage_frequency__c,
       Technical_Issues__c:    data.technical_issues__c,
       Issue_Detail__c:        data.issue_detail__c,
-      Options_Used__c:        data.options_used__c,
+      Used_Features__c:       data.used_features__c,
       Qualitative_Feedback__c: data.qualitative_feedback__c,
       Training_Needs__c:      data.training_needs__c,
-      Access_Code__c:         data.access_code__c,
+
       Month__c:               data.month__c,
+      Product__c:             data.product__c,
     };
 
     for (const [key, val] of Object.entries(optional)) {
