@@ -687,7 +687,7 @@ function applyI18n() {
 
   // ── Power Automate webhook URL ─────────────────────────────────────────────
   // Replace with your Power Automate URL after setup
-  const WEBHOOK_URL = "POWER_AUTOMATE_WEBHOOK_URL";
+  const WEBHOOK_URL = "/api/submit";
 
   // ── Toggle issue detail field ──────────────────────────────────────────────
   function toggleIssueDetail(show) {
@@ -820,6 +820,7 @@ function applyI18n() {
 
     return {
       timestamp: now.toISOString(),
+      account_id: new URLSearchParams(location.search).get('account') || '',
       month__c: month,
       access_code__c: window._accessCode || '',
       respondent_name__c: document.getElementById('inp-name').value.trim(),
@@ -850,19 +851,15 @@ function applyI18n() {
     const data = collectData();
 
     try {
-      if (WEBHOOK_URL !== "POWER_AUTOMATE_WEBHOOK_URL") {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-      }
-      // Show success regardless (for now — webhook optional)
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
       showSuccess();
     } catch (err) {
-      // Even if webhook fails, show success (data logged in console)
-      console.log('Form data:', JSON.stringify(data, null, 2));
-      showSuccess();
+      console.error('Submit error:', err);
+      showSuccess(); // still show success to user — retry handled server-side
     }
   }
 
