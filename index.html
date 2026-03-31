@@ -218,20 +218,20 @@
 <div id="access-gate" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;">
   <div style="background:#fff; border-radius:16px; box-shadow:0 4px 32px rgba(31,78,121,0.12); padding:40px 32px; max-width:420px; width:100%; text-align:center; border:1px solid #e2e8f0;">
     <img id="gate-logo" src="" alt="NordicNeuroLab" style="height:48px; width:auto; margin-bottom:24px; display:block; margin-left:auto; margin-right:auto;">
-    <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#1F4E79; font-weight:400; margin-bottom:8px;">Survey Access</h2>
-    <p style="font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6;">Enter the access code received by email to access the satisfaction survey.</p>
+    <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#1F4E79; font-weight:400; margin-bottom:8px;" data-i18n="gate_title">Survey Access</h2>
+    <p style="font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6;" data-i18n="gate_desc">Enter the access code received by email to access the satisfaction survey.</p>
     <div id="gate-field" style="margin-bottom:16px;">
       <input type="text" id="gate-code-input" placeholder="Ex : NNL-HOPITAL-2026" 
         style="width:100%; padding:12px 16px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:15px; font-family:'DM Sans',sans-serif; text-align:center; letter-spacing:0.05em; text-transform:uppercase; outline:none;"
         onkeydown="if(event.key==='Enter') checkCode()">
     </div>
-    <div id="gate-error" style="display:none; font-size:12px; color:#C00000; margin-bottom:12px;">
+    <div id="gate-error" style="display:none; font-size:12px; color:#C00000; margin-bottom:12px;" data-i18n="gate_error">
       Invalid code. Please check the code received by email.
     </div>
-    <button onclick="checkCode()" style="width:100%; padding:12px; background:#2E75B6; color:white; border:none; border-radius:8px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; cursor:pointer;">
+    <button onclick="checkCode()" style="width:100%; padding:12px; background:#2E75B6; color:white; border:none; border-radius:8px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; cursor:pointer;" data-i18n="gate_btn">
       Access the survey →
     </button>
-    <p style="font-size:11px; color:#9ca3af; margin-top:16px;">NordicNeuroLab — Confidential</p>
+    <p style="font-size:11px; color:#9ca3af; margin-top:16px;" data-i18n="gate_footer">NordicNeuroLab — Confidential</p>
   </div>
 </div>
 
@@ -262,36 +262,36 @@
     <div class="card">
       <div class="section-tag">Identification</div>
       <h2 class="card-title">Qui êtes-vous ?</h2>
-      <p class="card-desc">This information helps us link your feedback to your installation.</p>
+      <p class="card-desc" data-i18n="s1_desc">This information helps us link your feedback to your installation.</p>
 
       <div class="field" id="field-name">
-        <label>Full name <span class="req">*</span></label>
-        <input type="text" id="inp-name" placeholder="Ex : Marie Dupont" autocomplete="name">
+        <label><span data-i18n="s1_name_label">Full name</span> <span class="req">*</span></label>
+        <input type="text" id="inp-name" placeholder="Ex : Marie Dupont" data-i18n-placeholder="s1_name_placeholder" autocomplete="name">
         <div class="error-msg">Ce champ est obligatoire / This field is required</div>
       </div>
 
       <div class="field" id="field-hospital">
-        <label>Hospital or facility name <span class="req">*</span></label>
-        <input type="text" id="inp-hospital" placeholder="e.g. General Hospital">
+        <label><span data-i18n="s1_hospital_label">Hospital or facility name</span> <span class="req">*</span></label>
+        <input type="text" id="inp-hospital" placeholder="e.g. General Hospital" data-i18n-placeholder="s1_hospital_placeholder">
         <div class="error-msg">Ce champ est obligatoire / This field is required</div>
       </div>
 
       <div class="field" id="field-role">
-        <label>Your role <span class="req">*</span></label>
+        <label><span data-i18n="s1_role_label">Your role</span> <span class="req">*</span></label>
         <select id="inp-role">
-          <option value="">— Select —</option>
-          <option>Radiographer</option>
-          <option>Radiologist</option>
-          <option>Biomedical technician</option>
-          <option>Healthcare manager</option>
-          <option>Other</option>
+          <option value="" data-i18n="s1_role_default">— Select —</option>
+          <option data-i18n="s1_role_radiographer">Radiographer</option>
+          <option data-i18n="s1_role_radiologist">Radiologist</option>
+          <option data-i18n="s1_role_biomedical">Biomedical technician</option>
+          <option data-i18n="s1_role_manager">Healthcare manager</option>
+          <option data-i18n="s1_role_other">Other</option>
         </select>
-        <div class="error-msg">Please select your role</div>
+        <div class="error-msg" data-i18n="s1_role_error">Please select your role</div>
       </div>
 
       <div class="nav">
         <div></div>
-        <button class="btn btn-primary" onclick="nextStep(1)">Next →</button>
+        <button class="btn btn-primary" onclick="nextStep(1)" data-i18n="btn_next">Next →</button>
       </div>
     </div>
   </div>
@@ -299,12 +299,12 @@
   <!-- ── STEP 2: Logiciel ── -->
   <div class="step" id="step-2">
     <div class="card">
-      <div class="section-tag">Software Interface</div>
-      <h2 class="card-title">nCP Software</h2>
-      <p class="card-desc">Rate your experience with the software interface.</p>
+      <div class="section-tag" data-i18n="s2_tag">Software Interface</div>
+      <h2 class="card-title" data-i18n="s2_title">nCP Software</h2>
+      <p class="card-desc" data-i18n="s2_desc">Rate your experience with the software interface.</p>
 
       <div class="field" id="field-score-soft">
-        <label>Ease of use — nCP Software <span class="req">*</span></label>
+        <label><span data-i18n="s2_soft_label">Ease of use — nCP Software</span> <span class="req">*</span></label>
         <div class="star-group" id="stars-soft">
           <button class="star-btn" data-val="1" onclick="setRating('soft',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('soft',2)">★</button>
@@ -312,24 +312,24 @@
           <button class="star-btn" data-val="4" onclick="setRating('soft',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('soft',5)">★</button>
         </div>
-        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
-        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
+        <div class="star-labels"><span data-i18n="star_min">Very dissatisfied</span><span data-i18n="star_max">Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
       <div class="field" id="field-freq">
-        <label>Usage frequency <span class="req">*</span></label>
+        <label><span data-i18n="s2_freq_label">Usage frequency</span> <span class="req">*</span></label>
         <div class="choice-group" id="freq-group">
-          <label class="choice-item"><input type="radio" name="freq" value="Daily"> Daily</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Several times a week"> Several times a week</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Occasional"> Occasional</label>
-          <label class="choice-item"><input type="radio" name="freq" value="Rarely"> Rarely</label>
+          <label class="choice-item"><input type="radio" name="freq" value="Daily"> <span data-i18n="freq_daily">Daily</span></label>
+          <label class="choice-item"><input type="radio" name="freq" value="Several times a week"> <span data-i18n="freq_weekly">Several times a week</span></label>
+          <label class="choice-item"><input type="radio" name="freq" value="Occasional"> <span data-i18n="freq_occasional">Occasional</span></label>
+          <label class="choice-item"><input type="radio" name="freq" value="Rarely"> <span data-i18n="freq_rarely">Rarely</span></label>
         </div>
-        <div class="error-msg">Please select an option</div>
+        <div class="error-msg" data-i18n="select_error">Please select an option</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
-        <button class="btn btn-primary" onclick="nextStep(2)">Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(2)" data-i18n="btn_back">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(2)" data-i18n="btn_next">Next →</button>
       </div>
     </div>
   </div>
@@ -337,12 +337,12 @@
   <!-- ── STEP 3: Matériel ── -->
   <div class="step" id="step-3">
     <div class="card">
-      <div class="section-tag">Hardware</div>
-      <h2 class="card-title">Installed Hardware</h2>
-      <p class="card-desc">Power supply unit, LCD screen, touchscreen PC.</p>
+      <div class="section-tag" data-i18n="s3_tag">Hardware</div>
+      <h2 class="card-title" data-i18n="s3_title">Installed Hardware</h2>
+      <p class="card-desc" data-i18n="s3_desc">Power supply unit, LCD screen, touchscreen PC.</p>
 
       <div class="field" id="field-score-hw">
-        <label>Satisfaction with installed hardware <span class="req">*</span></label>
+        <label><span data-i18n="s3_hw_label">Satisfaction with installed hardware</span> <span class="req">*</span></label>
         <div class="star-group" id="stars-hw">
           <button class="star-btn" data-val="1" onclick="setRating('hw',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('hw',2)">★</button>
@@ -350,30 +350,30 @@
           <button class="star-btn" data-val="4" onclick="setRating('hw',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('hw',5)">★</button>
         </div>
-        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
-        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
+        <div class="star-labels"><span data-i18n="star_min">Very dissatisfied</span><span data-i18n="star_max">Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
       <div class="field" id="field-issues">
-        <label>Technical issues since installation <span class="req">*</span></label>
+        <label><span data-i18n="s3_issues_label">Technical issues since installation</span> <span class="req">*</span></label>
         <div class="choice-group">
-          <label class="choice-item"><input type="radio" name="issues" value="No issues" onchange="toggleIssueDetail(false)"> No issues</label>
-          <label class="choice-item"><input type="radio" name="issues" value="1 minor incident" onchange="toggleIssueDetail(true)"> 1 minor incident</label>
-          <label class="choice-item"><input type="radio" name="issues" value="Multiple incidents" onchange="toggleIssueDetail(true)"> Multiple incidents</label>
-          <label class="choice-item"><input type="radio" name="issues" value="Unresolved issue" onchange="toggleIssueDetail(true)"> Unresolved issue</label>
+          <label class="choice-item"><input type="radio" name="issues" value="No issues" onchange="toggleIssueDetail(false)"> <span data-i18n="issues_none">No issues</span></label>
+          <label class="choice-item"><input type="radio" name="issues" value="1 minor incident" onchange="toggleIssueDetail(true)"> <span data-i18n="issues_minor">1 minor incident</span></label>
+          <label class="choice-item"><input type="radio" name="issues" value="Multiple incidents" onchange="toggleIssueDetail(true)"> <span data-i18n="issues_multiple">Multiple incidents</span></label>
+          <label class="choice-item"><input type="radio" name="issues" value="Unresolved issue" onchange="toggleIssueDetail(true)"> <span data-i18n="issues_unresolved">Unresolved issue</span></label>
         </div>
-        <div class="error-msg">Please select an option</div>
+        <div class="error-msg" data-i18n="select_error">Please select an option</div>
       </div>
 
       <div class="field" id="field-issue-detail" style="display:none; animation: fadeIn 0.3s ease;">
-        <label>Please describe the issue <span class="req">*</span></label>
-        <textarea id="inp-issue-detail" placeholder="Describe the issue, when it occurred, and whether it was resolved..."></textarea>
-        <div class="error-msg">Please describe the issue</div>
+        <label><span data-i18n="s3_detail_label">Please describe the issue</span> <span class="req">*</span></label>
+        <textarea id="inp-issue-detail" placeholder="Describe the issue, when it occurred, and whether it was resolved..." data-i18n-placeholder="s3_detail_placeholder"></textarea>
+        <div class="error-msg" data-i18n="s3_detail_error">Please describe the issue</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
-        <button class="btn btn-primary" onclick="nextStep(3)">Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(3)" data-i18n="btn_back">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(3)" data-i18n="btn_next">Next →</button>
       </div>
     </div>
   </div>
@@ -381,12 +381,12 @@
   <!-- ── STEP 4: Options ── -->
   <div class="step" id="step-4">
     <div class="card">
-      <div class="section-tag">Advanced Options</div>
-      <h2 class="card-title">Solution Options</h2>
-      <p class="card-desc">Apnea commands, custom text, exam duration.</p>
+      <div class="section-tag" data-i18n="s4_tag">Advanced Options</div>
+      <h2 class="card-title" data-i18n="s4_title">Solution Options</h2>
+      <p class="card-desc" data-i18n="s4_desc">Apnea commands, custom text, exam duration.</p>
 
       <div class="field" id="field-score-opt">
-        <label>Satisfaction with available options <span class="req">*</span></label>
+        <label><span data-i18n="s4_opt_label">Satisfaction with available options</span> <span class="req">*</span></label>
         <div class="star-group" id="stars-opt">
           <button class="star-btn" data-val="1" onclick="setRating('opt',1)">★</button>
           <button class="star-btn" data-val="2" onclick="setRating('opt',2)">★</button>
@@ -394,23 +394,23 @@
           <button class="star-btn" data-val="4" onclick="setRating('opt',4)">★</button>
           <button class="star-btn" data-val="5" onclick="setRating('opt',5)">★</button>
         </div>
-        <div class="star-labels"><span>Very dissatisfied</span><span>Very satisfied</span></div>
-        <div class="error-msg" style="margin-top:28px">Please select a rating</div>
+        <div class="star-labels"><span data-i18n="star_min">Very dissatisfied</span><span data-i18n="star_max">Very satisfied</span></div>
+        <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
       <div class="field">
-        <label>Options used regularly</label>
+        <label><span data-i18n="s4_opts_used">Options used regularly</span></label>
         <div class="choice-group">
-          <label class="choice-item"><input type="checkbox" name="opts" value="Apnea commands"> Apnea commands</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="Custom text"> Custom text</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="Exam duration"> Exam duration</label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="None so far"> None so far</label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Apnea commands"> <span data-i18n="opt_apnea">Apnea commands</span></label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Custom text"> <span data-i18n="opt_text">Custom text</span></label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="Exam duration"> <span data-i18n="opt_duration">Exam duration</span></label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="None so far"> <span data-i18n="opt_none">None so far</span></label>
         </div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
-        <button class="btn btn-primary" onclick="nextStep(4)">Next →</button>
+        <button class="btn btn-secondary" onclick="prevStep(4)" data-i18n="btn_back">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep(4)" data-i18n="btn_next">Next →</button>
       </div>
     </div>
   </div>
@@ -418,28 +418,28 @@
   <!-- ── STEP 5: Feedback ── -->
   <div class="step" id="step-5">
     <div class="card">
-      <div class="section-tag">Qualitative Feedback</div>
-      <h2 class="card-title">Your Feedback</h2>
-      <p class="card-desc">Share your experience freely. Your comments help us improve the solution and our support.</p>
+      <div class="section-tag" data-i18n="s5_tag">Qualitative Feedback</div>
+      <h2 class="card-title" data-i18n="s5_title">Your Feedback</h2>
+      <p class="card-desc" data-i18n="s5_desc">Share your experience freely. Your comments help us improve the solution and our support.</p>
 
       <div class="field">
-        <label>What could be improved?</label>
-        <textarea id="inp-feedback" placeholder="Feel free to describe..."></textarea>
+        <label data-i18n="s5_improve_label">What could be improved?</label>
+        <textarea id="inp-feedback" placeholder="Feel free to describe..." data-i18n-placeholder="s5_improve_placeholder"></textarea>
       </div>
 
       <div class="field" id="field-training">
-        <label>Additional training needed? <span class="req">*</span></label>
+        <label><span data-i18n="s5_training_label">Additional training needed?</span> <span class="req">*</span></label>
         <div class="choice-group">
-          <label class="choice-item"><input type="radio" name="training" value="Yes, needed"> Yes, needed</label>
-          <label class="choice-item"><input type="radio" name="training" value="Maybe"> Maybe</label>
-          <label class="choice-item"><input type="radio" name="training" value="No, we're autonomous"> No, we're autonomous</label>
+          <label class="choice-item"><input type="radio" name="training" value="Yes, needed"> <span data-i18n="training_yes">Yes, needed</span></label>
+          <label class="choice-item"><input type="radio" name="training" value="Maybe"> <span data-i18n="training_maybe">Maybe</span></label>
+          <label class="choice-item"><input type="radio" name="training" value="No, we're autonomous"> <span data-i18n="training_no">No, we're autonomous</span></label>
         </div>
-        <div class="error-msg">Please select an option</div>
+        <div class="error-msg" data-i18n="select_error">Please select an option</div>
       </div>
 
       <div class="nav">
-        <button class="btn btn-secondary" onclick="prevStep(5)">← Back</button>
-        <button class="btn btn-primary" id="submit-btn" onclick="submitForm()">Submit ✓</button>
+        <button class="btn btn-secondary" onclick="prevStep(5)" data-i18n="btn_back">← Back</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitForm()" data-i18n="btn_submit">Submit ✓</button>
       </div>
     </div>
   </div>
@@ -448,8 +448,8 @@
   <div class="step" id="step-success">
     <div class="card success-card">
       <div class="success-icon">✓</div>
-      <h2>Thank you for your feedback!</h2>
-      <p>
+      <h2 data-i18n="success_title">Thank you for your feedback!</h2>
+      <p data-i18n="success_body">
         Your responses have been recorded. Our Customer Success team will review them and follow up if needed.
       </p>
     </div>
@@ -457,7 +457,7 @@
 
 </div>
 
-<div class="footer">NordicNeuroLab — Customer Success Engineering — Confidential</div>
+<div class="footer" data-i18n="footer_text">NordicNeuroLab — Customer Success Engineering — Confidential</div>
 </div>
 
 <script>
@@ -475,6 +475,9 @@
       gateImg.src = headerImg.src;
       gateImg.style.filter = 'none';  // show original colors on white background
     }
+
+    // Apply i18n translations
+    applyI18n();
 
     // Check URL param on load
     const urlCode = new URLSearchParams(window.location.search).get('code');
@@ -506,13 +509,7 @@
   let currentStep = 1;
   const totalSteps = 5;
 
-  const stepLabels = [
-    "Step 1 of 5 — Identification",
-    "Step 2 of 5 — Software Interface",
-    "Step 3 of 5 — Hardware",
-    "Step 4 of 5 — Advanced Options",
-    "Step 5 of 5 — Feedback"
-  ];
+  const stepLabels = _t.step_labels;
 
   // ── Power Automate webhook URL ─────────────────────────────────────────────
   // Replace with your Power Automate URL after setup
@@ -644,7 +641,7 @@
   function collectData() {
     const opts = [...document.querySelectorAll('input[name="opts"]:checked')].map(c => c.value).join('; ');
     const now = new Date();
-    const month = ['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'][now.getMonth()];
+    const month = _t.months[now.getMonth()];
     const scoreGlobal = ((ratings.soft + ratings.hw + ratings.opt) / 3).toFixed(2);
 
     return {
@@ -675,7 +672,7 @@
 
     const btn = document.getElementById('submit-btn');
     btn.classList.add('sending');
-    btn.textContent = 'Sending...';
+    btn.textContent = _t.sending || 'Sending...';
 
     const data = collectData();
 
@@ -702,6 +699,180 @@
     document.getElementById('step-success').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+// \u2500\u2500 i18n \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+const i18n = {
+  en: {
+    gate_title: "Survey Access",
+    gate_desc: "Enter the access code received by email to access the satisfaction survey.",
+    gate_error: "Invalid code. Please check the code received by email.",
+    gate_btn: "Access the survey \u2192",
+    gate_footer: "NordicNeuroLab \u2014 Confidential",
+    s1_desc: "This information helps us link your feedback to your installation.",
+    s1_name_label: "Full name",
+    s1_name_placeholder: "e.g. Marie Dupont",
+    s1_hospital_label: "Hospital or facility name",
+    s1_hospital_placeholder: "e.g. General Hospital",
+    s1_role_label: "Your role",
+    s1_role_default: "\u2014 Select \u2014",
+    s1_role_radiographer: "Radiographer",
+    s1_role_radiologist: "Radiologist",
+    s1_role_biomedical: "Biomedical technician",
+    s1_role_manager: "Healthcare manager",
+    s1_role_other: "Other",
+    s1_role_error: "Please select your role",
+    btn_next: "Next \u2192",
+    btn_back: "\u2190 Back",
+    btn_submit: "Submit \u2713",
+    sending: "Sending...",
+    s2_tag: "Software Interface",
+    s2_title: "nCP Software",
+    s2_desc: "Rate your experience with the software interface.",
+    s2_soft_label: "Ease of use \u2014 nCP Software",
+    star_min: "Very dissatisfied",
+    star_max: "Very satisfied",
+    rating_error: "Please select a rating",
+    s2_freq_label: "Usage frequency",
+    freq_daily: "Daily",
+    freq_weekly: "Several times a week",
+    freq_occasional: "Occasional",
+    freq_rarely: "Rarely",
+    select_error: "Please select an option",
+    s3_tag: "Hardware",
+    s3_title: "Installed Hardware",
+    s3_desc: "Power supply unit, LCD screen, touchscreen PC.",
+    s3_hw_label: "Satisfaction with installed hardware",
+    s3_issues_label: "Technical issues since installation",
+    issues_none: "No issues",
+    issues_minor: "1 minor incident",
+    issues_multiple: "Multiple incidents",
+    issues_unresolved: "Unresolved issue",
+    s3_detail_label: "Please describe the issue",
+    s3_detail_placeholder: "Describe the issue, when it occurred, and whether it was resolved...",
+    s3_detail_error: "Please describe the issue",
+    s4_tag: "Advanced Options",
+    s4_title: "Solution Options",
+    s4_desc: "Apnea commands, custom text, exam duration.",
+    s4_opt_label: "Satisfaction with available options",
+    s4_opts_used: "Options used regularly",
+    opt_apnea: "Apnea commands",
+    opt_text: "Custom text",
+    opt_duration: "Exam duration",
+    opt_none: "None so far",
+    s5_tag: "Qualitative Feedback",
+    s5_title: "Your Feedback",
+    s5_desc: "Share your experience freely. Your comments help us improve the solution and our support.",
+    s5_improve_label: "What could be improved?",
+    s5_improve_placeholder: "Feel free to describe...",
+    s5_training_label: "Additional training needed?",
+    training_yes: "Yes, needed",
+    training_maybe: "Maybe",
+    training_no: "No, we're autonomous",
+    success_title: "Thank you for your feedback!",
+    success_body: "Your responses have been recorded. Our Customer Success team will review them and follow up if needed.",
+    footer_text: "NordicNeuroLab \u2014 Customer Success Engineering \u2014 Confidential",
+    step_labels: [
+      "Step 1 of 5 \u2014 Identification",
+      "Step 2 of 5 \u2014 Software Interface",
+      "Step 3 of 5 \u2014 Hardware",
+      "Step 4 of 5 \u2014 Advanced Options",
+      "Step 5 of 5 \u2014 Feedback"
+    ],
+    months: ['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
+  },
+  fr: {
+    gate_title: "Acc\u00e8s au questionnaire",
+    gate_desc: "Saisissez le code d'acc\u00e8s re\u00e7u par email pour acc\u00e9der au questionnaire de satisfaction.",
+    gate_error: "Code invalide. V\u00e9rifiez le code re\u00e7u par email.",
+    gate_btn: "Acc\u00e9der au formulaire \u2192",
+    gate_footer: "NordicNeuroLab \u2014 Confidentiel",
+    s1_desc: "Ces informations nous permettent d'associer votre retour \u00e0 votre installation.",
+    s1_name_label: "Nom et pr\u00e9nom",
+    s1_name_placeholder: "Ex : Marie Dupont",
+    s1_hospital_label: "H\u00f4pital / \u00c9tablissement",
+    s1_hospital_placeholder: "Ex : CHU de Lyon",
+    s1_role_label: "Votre fonction",
+    s1_role_default: "\u2014 S\u00e9lectionner \u2014",
+    s1_role_radiographer: "Manipulateur(trice) radio",
+    s1_role_radiologist: "Radiologue",
+    s1_role_biomedical: "Technicien(ne) biom\u00e9dical(e)",
+    s1_role_manager: "Cadre de sant\u00e9",
+    s1_role_other: "Autre",
+    s1_role_error: "Veuillez s\u00e9lectionner votre fonction",
+    btn_next: "Suivant \u2192",
+    btn_back: "\u2190 Retour",
+    btn_submit: "Envoyer \u2713",
+    sending: "Envoi en cours...",
+    s2_tag: "Interface logicielle",
+    s2_title: "Logiciel nCP",
+    s2_desc: "\u00c9valuez votre exp\u00e9rience avec l'interface logicielle.",
+    s2_soft_label: "Facilit\u00e9 d'utilisation du logiciel nCP",
+    star_min: "Tr\u00e8s insatisfait",
+    star_max: "Tr\u00e8s satisfait",
+    rating_error: "Veuillez attribuer une note",
+    s2_freq_label: "Fr\u00e9quence d'utilisation",
+    freq_daily: "Quotidienne",
+    freq_weekly: "Plusieurs fois par semaine",
+    freq_occasional: "Occasionnelle",
+    freq_rarely: "Rarement",
+    select_error: "Veuillez s\u00e9lectionner une option",
+    s3_tag: "Mat\u00e9riel",
+    s3_title: "Mat\u00e9riel install\u00e9",
+    s3_desc: "Bo\u00eetier d'alimentation, \u00e9cran LCD, PC avec \u00e9cran tactile.",
+    s3_hw_label: "Satisfaction avec le mat\u00e9riel install\u00e9",
+    s3_issues_label: "Probl\u00e8mes techniques depuis l'installation",
+    issues_none: "Aucun probl\u00e8me",
+    issues_minor: "1 incident mineur",
+    issues_multiple: "Plusieurs incidents",
+    issues_unresolved: "Probl\u00e8me non r\u00e9solu",
+    s3_detail_label: "D\u00e9crivez le probl\u00e8me rencontr\u00e9",
+    s3_detail_placeholder: "D\u00e9crivez le probl\u00e8me, quand il s'est produit, et s'il a \u00e9t\u00e9 r\u00e9solu...",
+    s3_detail_error: "Merci de d\u00e9crire le probl\u00e8me",
+    s4_tag: "Options avanc\u00e9es",
+    s4_title: "Options de la solution",
+    s4_desc: "Apn\u00e9e, textes personnalis\u00e9s, dur\u00e9e d'examen.",
+    s4_opt_label: "Satisfaction avec les options disponibles",
+    s4_opts_used: "Options utilis\u00e9es r\u00e9guli\u00e8rement",
+    opt_apnea: "Commandes apn\u00e9e",
+    opt_text: "Textes personnalis\u00e9s",
+    opt_duration: "Dur\u00e9e d'examen",
+    opt_none: "Aucune \u00e0 ce jour",
+    s5_tag: "Feedback qualitatif",
+    s5_title: "Votre retour",
+    s5_desc: "Partagez votre exp\u00e9rience librement. Vos commentaires nous aident \u00e0 am\u00e9liorer la solution et notre accompagnement.",
+    s5_improve_label: "Qu'est-ce qui pourrait \u00eatre am\u00e9lior\u00e9 ?",
+    s5_improve_placeholder: "D\u00e9crivez librement...",
+    s5_training_label: "Besoin d'une formation compl\u00e9mentaire ?",
+    training_yes: "Oui, c'est n\u00e9cessaire",
+    training_maybe: "Peut-\u00eatre",
+    training_no: "Non, nous sommes autonomes",
+    success_title: "Merci pour votre retour !",
+    success_body: "Vos r\u00e9ponses ont bien \u00e9t\u00e9 enregistr\u00e9es. Notre \u00e9quipe Customer Success les analysera et reviendra vers vous si n\u00e9cessaire.",
+    footer_text: "NordicNeuroLab \u2014 Customer Success Engineering \u2014 Confidentiel",
+    step_labels: [
+      "\u00c9tape 1 sur 5 \u2014 Identification",
+      "\u00c9tape 2 sur 5 \u2014 Interface logicielle",
+      "\u00c9tape 3 sur 5 \u2014 Mat\u00e9riel",
+      "\u00c9tape 4 sur 5 \u2014 Options avanc\u00e9es",
+      "\u00c9tape 5 sur 5 \u2014 Feedback"
+    ],
+    months: ['Janv.','F\u00e9vr.','Mars','Avr.','Mai','Juin','Juil.','Ao\u00fbt','Sept.','Oct.','Nov.','D\u00e9c.']
+  }
+};
+
+const _lang = new URLSearchParams(location.search).get('lang') || 'en';
+const _t = i18n[_lang] || i18n.en;
+
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (_t[key] !== undefined) el.textContent = _t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (_t[key] !== undefined) el.placeholder = _t[key];
+  });
+}
 </script>
 </div><!-- /main-content -->
 </body>
