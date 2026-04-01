@@ -4,6 +4,11 @@
 
 const i18n = {
   en: {
+    gate_title: "Survey Access",
+    gate_desc: "Enter the access code received by email to access the satisfaction survey.",
+    gate_error: "Invalid code. Please check the code received by email.",
+    gate_btn: "Access the survey →",
+    gate_footer: "NordicNeuroLab — Confidential",
     // ── Step 1: Identification ────────────────────────────────────────────────
     s1_tag:               "Identification",
     s1_title:             "Who are you?",
@@ -96,6 +101,11 @@ const i18n = {
   },
 
   fr: {
+    gate_title: "Accès au questionnaire",
+    gate_desc: "Saisissez le code d'accès reçu par email pour accéder au questionnaire de satisfaction.",
+    gate_error: "Code invalide. Vérifiez le code reçu par email.",
+    gate_btn: "Accéder au formulaire →",
+    gate_footer: "NordicNeuroLab — Confidentiel",
     // ── Étape 1 : Identification ──────────────────────────────────────────────
     s1_tag:               "Identification",
     s1_title:             "Qui êtes-vous ?",
