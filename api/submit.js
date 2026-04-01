@@ -58,6 +58,11 @@ export default async function handler(req, res) {
       Qualitative_Feedback__c: data.qualitative_feedback__c,
       Training_Needs__c:      data.training_needs__c,
 
+      Software_Difficulty__c: data.software_difficulty__c,
+      Hardware_Difficulty__c: data.hardware_difficulty__c,
+      Options_Difficulty__c:  data.options_difficulty__c,
+      Features_Not_Used__c:   data.features_not_used__c,
+
       Month__c:               data.month__c,
       Product__c:             data.product__c,
     };

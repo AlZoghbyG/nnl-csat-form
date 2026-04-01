@@ -319,6 +319,11 @@
         <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
+      <div class="field" id="field-soft-difficulty" style="display:none; animation: fadeIn 0.3s ease;">
+        <label data-i18n="low_rating_why">Describe in a few words what makes it difficult to use</label>
+        <input type="text" id="inp-soft-difficulty" data-i18n-placeholder="low_rating_placeholder" placeholder="e.g. confusing navigation, slow loading...">
+      </div>
+
       <div class="field" id="field-freq">
         <label><span data-i18n="s2_freq_label">Usage frequency</span> <span class="req">*</span></label>
         <div class="choice-group" id="freq-group">
@@ -360,6 +365,11 @@
         <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
+      <div class="field" id="field-hw-difficulty" style="display:none; animation: fadeIn 0.3s ease;">
+        <label data-i18n="low_hw_why">Explain why the hardware is difficult to use</label>
+        <input type="text" id="inp-hw-difficulty" data-i18n-placeholder="low_rating_placeholder" placeholder="e.g. screen issues, slow response...">
+      </div>
+
       <div class="field" id="field-issues">
         <label><span data-i18n="s3_issues_label">Technical issues since installation</span> <span class="req">*</span></label>
         <div class="choice-group">
@@ -372,7 +382,7 @@
       </div>
 
       <div class="field" id="field-issue-detail" style="display:none; animation: fadeIn 0.3s ease;">
-        <label><span data-i18n="s3_detail_label">Please describe the issue</span> <span class="req">*</span></label>
+        <label><span data-i18n="s3_detail_label">Describe the problem(s) encountered</span> <span class="req">*</span></label>
         <textarea id="inp-issue-detail" placeholder="Describe the issue, when it occurred, and whether it was resolved..." data-i18n-placeholder="s3_detail_placeholder"></textarea>
         <div class="error-msg" data-i18n="s3_detail_error">Please describe the issue</div>
       </div>
@@ -407,14 +417,24 @@
         <div class="error-msg" style="margin-top:28px" data-i18n="rating_error">Please select a rating</div>
       </div>
 
+      <div class="field" id="field-opt-difficulty" style="display:none; animation: fadeIn 0.3s ease;">
+        <label data-i18n="low_opt_why">Explain why you are not satisfied with the available features</label>
+        <input type="text" id="inp-opt-difficulty" data-i18n-placeholder="low_rating_placeholder" placeholder="e.g. missing features, difficult to configure...">
+      </div>
+
       <div class="field">
-        <label><span data-i18n="s4_opts_used">Options used regularly</span></label>
+        <label><span data-i18n="s4_opts_used">Features used regularly</span></label>
         <div class="choice-group">
           <label class="choice-item"><input type="checkbox" name="opts" value="Apnea commands"> <span data-i18n="opt_apnea">Apnea commands</span></label>
           <label class="choice-item"><input type="checkbox" name="opts" value="Custom text"> <span data-i18n="opt_text">Custom text</span></label>
           <label class="choice-item"><input type="checkbox" name="opts" value="Exam duration"> <span data-i18n="opt_duration">Exam duration</span></label>
-          <label class="choice-item"><input type="checkbox" name="opts" value="None so far"> <span data-i18n="opt_none">None so far</span></label>
+          <label class="choice-item"><input type="checkbox" name="opts" value="None so far" onchange="toggleNotUsedReason(this.checked)"> <span data-i18n="opt_none">None so far</span></label>
         </div>
+      </div>
+
+      <div class="field" id="field-not-used-reason" style="display:none; animation: fadeIn 0.3s ease;">
+        <label data-i18n="not_used_why">Why haven't you used any features yet?</label>
+        <input type="text" id="inp-not-used-reason" data-i18n-placeholder="not_used_placeholder" placeholder="e.g. not aware of them, no need yet...">
       </div>
 
       <div class="nav">
@@ -598,6 +618,13 @@ function applyI18n() {
     document.getElementById(`na-${type}`).classList.remove('selected');
     const fieldMap = { soft: 'field-score-soft', hw: 'field-score-hw', opt: 'field-score-opt' };
     document.getElementById(fieldMap[type]).classList.remove('has-error');
+
+    // Show difficulty explanation field for low ratings (< 3)
+    const diffMap = { soft: 'field-soft-difficulty', hw: 'field-hw-difficulty', opt: 'field-opt-difficulty' };
+    if (diffMap[type]) {
+      document.getElementById(diffMap[type]).style.display = val < 3 ? 'block' : 'none';
+      if (val >= 3) document.getElementById(`inp-${type}-difficulty`).value = '';
+    }
   }
 
   function setRatingNA(type) {
@@ -608,6 +635,18 @@ function applyI18n() {
     document.getElementById(`na-${type}`).classList.add('selected');
     const fieldMap = { soft: 'field-score-soft', hw: 'field-score-hw', opt: 'field-score-opt' };
     document.getElementById(fieldMap[type]).classList.remove('has-error');
+
+    // Hide difficulty field when N/A selected
+    const diffMap = { soft: 'field-soft-difficulty', hw: 'field-hw-difficulty', opt: 'field-opt-difficulty' };
+    if (diffMap[type]) {
+      document.getElementById(diffMap[type]).style.display = 'none';
+      document.getElementById(`inp-${type}-difficulty`).value = '';
+    }
+  }
+
+  function toggleNotUsedReason(show) {
+    document.getElementById('field-not-used-reason').style.display = show ? 'block' : 'none';
+    if (!show) document.getElementById('inp-not-used-reason').value = '';
   }
 
   // ── Radio/checkbox style ───────────────────────────────────────────────────
@@ -760,7 +799,13 @@ function applyI18n() {
       used_features__c: opts,
       qualitative_feedback__c: document.getElementById('inp-feedback').value.trim(),
       training_needs__c: document.querySelector('input[name="training"]:checked')?.value || '',
-      satisfied__c: satisfied
+      satisfied__c: satisfied,
+
+      // Conditional explanation fields (only sent when filled)
+      software_difficulty__c: document.getElementById('inp-soft-difficulty').value.trim() || undefined,
+      hardware_difficulty__c: document.getElementById('inp-hw-difficulty').value.trim() || undefined,
+      features_not_used__c: document.getElementById('inp-not-used-reason').value.trim() || undefined,
+      options_difficulty__c: document.getElementById('inp-opt-difficulty').value.trim() || undefined,
     };
   }
 

@@ -41,6 +41,14 @@ const i18n = {
     freq_occasional:      "Occasional",
     freq_rarely:          "Rarely",
 
+    // ── Conditional explanation fields ────────────────────────────────────────
+    low_rating_why:       "Describe in a few words what makes it difficult to use",
+    low_rating_placeholder: "e.g. confusing navigation, slow loading...",
+    low_hw_why:           "Explain why the hardware is difficult to use",
+    low_opt_why:          "Explain why you are not satisfied with the available features",
+    not_used_why:         "Why haven't you used any features yet?",
+    not_used_placeholder: "e.g. not aware of them, no need yet...",
+
     // ── Step 3: Hardware ──────────────────────────────────────────────────────
     s3_tag:               "Hardware",
     s3_title:             "Installed Hardware",
@@ -140,6 +148,14 @@ const i18n = {
     freq_weekly:          "Plusieurs fois par semaine",
     freq_occasional:      "Occasionnelle",
     freq_rarely:          "Rarement",
+
+    // ── Champs d'explication conditionnels ───────────────────────────────────
+    low_rating_why:       "Décrivez en quelques mots ce qui rend l'utilisation difficile",
+    low_rating_placeholder: "Ex : navigation peu intuitive, chargement lent...",
+    low_hw_why:           "Expliquez pourquoi le matériel est difficile à utiliser",
+    low_opt_why:          "Expliquez pourquoi vous n'êtes pas satisfait(e) des fonctionnalités disponibles",
+    not_used_why:         "Pourquoi n'avez-vous pas encore utilisé de fonctionnalités ?",
+    not_used_placeholder: "Ex : pas au courant, pas encore nécessaire...",
 
     // ── Étape 3 : Matériel ────────────────────────────────────────────────────
     s3_tag:               "Matériel",
