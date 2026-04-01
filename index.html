@@ -622,8 +622,8 @@ function applyI18n() {
     // Show difficulty explanation field for low ratings (< 3)
     const diffMap = { soft: 'field-soft-difficulty', hw: 'field-hw-difficulty', opt: 'field-opt-difficulty' };
     if (diffMap[type]) {
-      document.getElementById(diffMap[type]).style.display = val < 3 ? 'block' : 'none';
-      if (val >= 3) document.getElementById(`inp-${type}-difficulty`).value = '';
+      document.getElementById(diffMap[type]).style.display = val <= 3 ? 'block' : 'none';
+      if (val > 3) document.getElementById(`inp-${type}-difficulty`).value = '';
     }
   }
 
