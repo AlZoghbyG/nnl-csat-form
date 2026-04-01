@@ -64,8 +64,8 @@ const i18n = {
     s3_detail_error:      "Please describe the issue",
 
     // ── Step 4: Features ──────────────────────────────────────────────────────
-    s4_tag:               "Advanced Options",
-    s4_title:             "Solution Options",
+    s4_tag:               "Advanced Features",
+    s4_title:             "Solution Features",
     s4_desc:              "Apnea commands, custom text, exam duration.",
     s4_opt_label:         "Satisfaction with available features",
     s4_opts_used:         "Features used regularly",
@@ -109,7 +109,7 @@ const i18n = {
       "Step 1 of 5 — Identification",
       "Step 2 of 5 — Software Interface",
       "Step 3 of 5 — Hardware",
-      "Step 4 of 5 — Advanced Options",
+      "Step 4 of 5 — Advanced Features",
       "Step 5 of 5 — Feedback"
     ],
     months: ['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
@@ -172,8 +172,8 @@ const i18n = {
     s3_detail_error:      "Merci de décrire le problème",
 
     // ── Étape 4 : Fonctionnalités ─────────────────────────────────────────────
-    s4_tag:               "Options avancées",
-    s4_title:             "Options de la solution",
+    s4_tag:               "Fonctionnalités avancées",
+    s4_title:             "Fonctionnalités de la solution",
     s4_desc:              "Apnée, textes personnalisés, durée d'examen.",
     s4_opt_label:         "Satisfaction avec les fonctionnalités disponibles",
     s4_opts_used:         "Fonctionnalités utilisées régulièrement",
@@ -217,7 +217,7 @@ const i18n = {
       "Étape 1 sur 5 — Identification",
       "Étape 2 sur 5 — Interface logicielle",
       "Étape 3 sur 5 — Matériel",
-      "Étape 4 sur 5 — Options avancées",
+      "Étape 4 sur 5 — Fonctionnalités avancées",
       "Étape 5 sur 5 — Feedback"
     ],
     months: ['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.']
