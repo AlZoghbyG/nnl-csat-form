@@ -430,6 +430,18 @@
         <div class="error-msg" data-i18n="select_error">Please select an option</div>
       </div>
 
+      <!-- GDPR Consent -->
+      <div class="field" id="field-consent" style="margin-top:20px;">
+        <label class="choice-item" style="align-items:flex-start; gap:10px;">
+          <input type="checkbox" id="inp-consent" style="margin-top:3px; flex-shrink:0;">
+          <span style="font-size:12px; color:var(--muted); line-height:1.6;" data-i18n="consent_label">
+            I agree that my responses will be stored by NordicNeuroLab for service improvement purposes.
+            My data will be retained for a maximum of 3 years and will not be shared with third parties.
+          </span>
+        </label>
+        <div class="error-msg" data-i18n="consent_error">Please accept before submitting</div>
+      </div>
+
       <div class="nav">
         <button class="btn btn-secondary" onclick="prevStep(5)" data-i18n="btn_back">← Back</button>
         <button class="btn btn-primary" id="submit-btn" onclick="submitForm()" data-i18n="btn_submit">Submit ✓</button>
@@ -450,7 +462,10 @@
 
 </div>
 
-<div class="footer" data-i18n="footer_text">NordicNeuroLab — Customer Success Engineering — Confidential</div>
+<div class="footer">
+  <span data-i18n="footer_text">NordicNeuroLab — Customer Success Engineering — Confidential</span>
+  <br><span style="font-size:10px;" data-i18n="footer_privacy">Data controller: NordicNeuroLab AS — Responses are stored securely in Salesforce and retained for 3 years. You may request access, correction or deletion by contacting support@nordicneurolab.com</span>
+</div>
 </div>
 
 <script src="/questions.js"></script>
@@ -604,6 +619,10 @@ function applyI18n() {
       const training = document.querySelector('input[name="training"]:checked');
       document.getElementById('field-training').classList.toggle('has-error', !training);
       if (!training) valid = false;
+
+      const consent = document.getElementById('inp-consent').checked;
+      document.getElementById('field-consent').classList.toggle('has-error', !consent);
+      if (!consent) valid = false;
     }
 
     return valid;

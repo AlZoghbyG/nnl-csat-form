@@ -81,7 +81,10 @@ const i18n = {
     sending:              "Sending...",
     success_title:        "Thank you for your feedback!",
     success_body:         "Your responses have been recorded. Our Customer Success team will review them and follow up if needed.",
+    consent_label:        "I agree that my responses will be stored by NordicNeuroLab for service improvement purposes. My data will be retained for a maximum of 3 years and will not be shared with third parties.",
+    consent_error:        "Please accept before submitting",
     footer_text:          "NordicNeuroLab — Customer Success Engineering — Confidential",
+    footer_privacy:       "Data controller: NordicNeuroLab AS — Responses are stored securely in Salesforce and retained for 3 years. You may request access, correction or deletion by contacting support@nordicneurolab.com",
     step_labels: [
       "Step 1 of 5 — Identification",
       "Step 2 of 5 — Software Interface",
@@ -170,7 +173,10 @@ const i18n = {
     sending:              "Envoi en cours...",
     success_title:        "Merci pour votre retour !",
     success_body:         "Vos réponses ont bien été enregistrées. Notre équipe Customer Success les analysera et reviendra vers vous si nécessaire.",
+    consent_label:        "J'accepte que mes réponses soient conservées par NordicNeuroLab à des fins d'amélioration du service. Mes données seront conservées 3 ans maximum et ne seront pas partagées avec des tiers.",
+    consent_error:        "Veuillez accepter avant de soumettre",
     footer_text:          "NordicNeuroLab — Customer Success Engineering — Confidentiel",
+    footer_privacy:       "Responsable du traitement : NordicNeuroLab AS — Les réponses sont stockées de manière sécurisée dans Salesforce et conservées 3 ans. Vous pouvez demander l'accès, la correction ou la suppression en contactant support@nordicneurolab.com",
     step_labels: [
       "Étape 1 sur 5 — Identification",
       "Étape 2 sur 5 — Interface logicielle",
