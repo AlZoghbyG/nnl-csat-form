@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       Global__c:              data.global_score__c,
       Software_Rating__c:     data.software_rating__c,
       Hardware_Rating__c:     data.hardware_rating__c,
-      Options_Rating__c:      data.options_rating__c,
+      Features_Rating__c:     data.options_rating__c,
       Satisfied__c:           data.satisfied__c !== undefined ? Boolean(data.satisfied__c) : undefined,
       Respondent_Name__c:     data.respondent_name__c,
       Hospital__c:            data.hospital__c,
