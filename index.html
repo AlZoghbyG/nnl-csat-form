@@ -563,6 +563,25 @@ function applyI18n() {
   }
 
   function unlockForm() {
+    const accountId = new URLSearchParams(window.location.search).get('account');
+    if (!accountId) {
+      document.getElementById('access-gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      applyI18n();
+      // Replace form with invalid link message
+      document.getElementById('step-1').innerHTML = `
+        <div class="card" style="text-align:center;padding:40px 30px;">
+          <div style="font-size:48px;margin-bottom:16px;">🔗</div>
+          <h2 style="color:#C00000;font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;margin-bottom:12px;">Invalid link</h2>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7;">
+            This survey link is not associated with an account.<br>
+            Please contact your NordicNeuroLab representative to receive a valid link.
+          </p>
+        </div>`;
+      document.getElementById('step-1').classList.add('active');
+      document.querySelector('.progress-wrap').style.display = 'none';
+      return;
+    }
     document.getElementById('access-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     applyI18n();
