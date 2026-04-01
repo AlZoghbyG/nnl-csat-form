@@ -476,6 +476,18 @@
     </div>
   </div>
 
+  <!-- ── ERROR ── -->
+  <div class="step" id="step-error">
+    <div class="card" style="text-align:center;padding:40px 30px;">
+      <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
+      <h2 style="color:#C00000;font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;margin-bottom:12px;" data-i18n="error_title">Submission failed</h2>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;" data-i18n="error_body">
+        We could not record your response. Please try again or contact your NordicNeuroLab representative.
+      </p>
+      <button onclick="retrySubmit()" class="btn btn-primary" data-i18n="error_retry">Try again</button>
+    </div>
+  </div>
+
 </div>
 
 <div class="footer">
@@ -744,15 +756,24 @@ function applyI18n() {
     const data = collectData();
 
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      showSuccess();
+      if (res.ok) {
+        showSuccess();
+      } else {
+        const err = await res.json().catch(() => ({}));
+        console.error('Submit failed:', res.status, err);
+        showError();
+      }
     } catch (err) {
       console.error('Submit error:', err);
-      showSuccess(); // still show success to user — retry handled server-side
+      showError();
+    } finally {
+      btn.classList.remove('sending');
+      btn.textContent = _t.btn_submit || 'Submit ✓';
     }
   }
 
@@ -760,6 +781,20 @@ function applyI18n() {
     document.getElementById(`step-${currentStep}`).classList.remove('active');
     document.querySelector('.progress-wrap').style.display = 'none';
     document.getElementById('step-success').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showError() {
+    document.getElementById(`step-${currentStep}`).classList.remove('active');
+    document.querySelector('.progress-wrap').style.display = 'none';
+    document.getElementById('step-error').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function retrySubmit() {
+    document.getElementById('step-error').classList.remove('active');
+    document.querySelector('.progress-wrap').style.display = '';
+    document.getElementById(`step-${currentStep}`).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

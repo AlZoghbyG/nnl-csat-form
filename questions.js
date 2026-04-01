@@ -1,6 +1,10 @@
 // ── CSAT Survey Questions & Translations ──────────────────────────────────────
 // Edit this file to change question labels, options, and translations.
 // Both English (en) and French (fr) must have the same keys.
+//
+// ⚠️  BEFORE SAVING: validate your JSON syntax at https://jsonlint.com
+//     A missing comma or quote will break the entire form with a blank page.
+//     Paste the content of the `i18n = { ... }` object and click "Validate".
 
 const i18n = {
   en: {
@@ -86,6 +90,9 @@ const i18n = {
     sending:              "Sending...",
     success_title:        "Thank you for your feedback!",
     success_body:         "Your responses have been recorded. Our Customer Success team will review them and follow up if needed.",
+    error_title:          "Submission failed",
+    error_body:           "We could not record your response. Please try again or contact your NordicNeuroLab representative.",
+    error_retry:          "Try again",
     consent_label:        "I agree that my responses will be stored by NordicNeuroLab for service improvement purposes. My data will be retained for a maximum of 3 years and will not be shared with third parties.",
     consent_error:        "Please accept before submitting",
     footer_text:          "NordicNeuroLab — Customer Success Engineering — Confidential",
@@ -183,6 +190,9 @@ const i18n = {
     sending:              "Envoi en cours...",
     success_title:        "Merci pour votre retour !",
     success_body:         "Vos réponses ont bien été enregistrées. Notre équipe Customer Success les analysera et reviendra vers vous si nécessaire.",
+    error_title:          "Échec de l'envoi",
+    error_body:           "Nous n'avons pas pu enregistrer votre réponse. Veuillez réessayer ou contacter votre représentant NordicNeuroLab.",
+    error_retry:          "Réessayer",
     consent_label:        "J'accepte que mes réponses soient conservées par NordicNeuroLab à des fins d'amélioration du service. Mes données seront conservées 3 ans maximum et ne seront pas partagées avec des tiers.",
     consent_error:        "Veuillez accepter avant de soumettre",
     footer_text:          "NordicNeuroLab — Customer Success Engineering — Confidentiel",
