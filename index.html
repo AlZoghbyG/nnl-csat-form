@@ -780,10 +780,13 @@ function applyI18n() {
     ].filter(v => v !== null && v > 0);
     const satisfied = satisfiedScores.length > 0 && satisfiedScores.every(v => v >= 4) ? 1 : 0;
 
+    const _p = new URLSearchParams(location.search);
     return {
       timestamp: now.toISOString(),
-      account_id: new URLSearchParams(location.search).get('account') || '',
-      product__c: new URLSearchParams(location.search).get('product') || '',
+      account_id:  _p.get('account') || '',
+      survey_code: _p.get('code')    || '',
+      sig:         _p.get('sig')     || '',
+      product__c:  _p.get('product') || '',
       month__c: month,
 
       respondent_name__c: document.getElementById('inp-name').value.trim(),

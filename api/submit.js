@@ -1,6 +1,8 @@
 // Receives CSAT form submission, writes NNL_CSAT_Response__c record to Salesforce
 // Uses Client Credentials Flow — no user login required
 
+import crypto from 'crypto';
+
 export default async function handler(req, res) {
   // CORS — form is same-origin on Vercel but handle preflight anyway
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -10,8 +12,21 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
+  const data = req.body;
+
+  // ── Gap 2: Verify HMAC signature ──────────────────────────────────────────
+  const hmacSecret = process.env.HMAC_SECRET;
+  if (hmacSecret) {
+    const expected = crypto
+      .createHmac('sha256', hmacSecret)
+      .update(`${data.account_id}|${data.survey_code || ''}`)
+      .digest('hex');
+    if (!data.sig || data.sig !== expected) {
+      return res.status(403).json({ error: 'Invalid signature' });
+    }
+  }
+
   try {
-    const data = req.body;
 
     // ── 1. Get SF access token via Client Credentials ──────────────────────
     const tokenRes = await fetch(
@@ -34,11 +49,25 @@ export default async function handler(req, res) {
 
     const { access_token } = await tokenRes.json();
 
+    // ── Gap 1: Verify account exists in Salesforce ─────────────────────────
+    const safeId = String(data.account_id || '').replace(/'/g, '');
+    if (!safeId) return res.status(400).json({ error: 'Missing account_id' });
+
+    const acctRes = await fetch(
+      `${process.env.SF_INSTANCE_URL}/services/data/v59.0/query?q=${encodeURIComponent(`SELECT Id FROM Account WHERE Id = '${safeId}'`)}`,
+      { headers: { Authorization: `Bearer ${access_token}` } }
+    );
+    const acctData = await acctRes.json();
+    if (!acctData.records || acctData.records.length === 0) {
+      return res.status(400).json({ error: 'Invalid account' });
+    }
+
     // ── 2. Build SF record ─────────────────────────────────────────────────
     // Always-present fields
     const record = {
-      Account__c:   data.account_id  || null,
+      Account__c:    data.account_id || null,
       Submission__c: data.timestamp  || new Date().toISOString(),
+      Survey_Code__c: data.survey_code || null,  // Gap 3: audit trail
     };
 
     // Optional fields — only included once created in SF object
