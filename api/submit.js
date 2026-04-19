@@ -65,8 +65,9 @@ export default async function handler(req, res) {
     // ── 2. Build SF record ─────────────────────────────────────────────────
     // Always-present fields
     const record = {
-      Account__c:    data.account_id || null,
-      Submission__c: data.timestamp  || new Date().toISOString(),
+      Account__c:     data.account_id  || null,
+      Submission__c:  data.timestamp   || new Date().toISOString(),
+      Survey_Code__c: data.survey_code || null,
     };
 
     // Optional fields — only included once created in SF object
