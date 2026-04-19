@@ -103,7 +103,7 @@ export default async function handler(req, res) {
 
     // ── 3. Create record in Salesforce ─────────────────────────────────────
     const sfRes = await fetch(
-      `${process.env.SF_INSTANCE_URL}/services/data/v59.0/sobjects/CSAT_Response__c/`,
+      `${process.env.SF_INSTANCE_URL}/services/data/v59.0/sobjects/NNL_CSAT_Response__c/`,
       {
         method:  'POST',
         headers: {
