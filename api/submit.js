@@ -67,7 +67,6 @@ export default async function handler(req, res) {
     const record = {
       Account__c:    data.account_id || null,
       Submission__c: data.timestamp  || new Date().toISOString(),
-      Survey_Code__c: data.survey_code || null,  // Gap 3: audit trail
     };
 
     // Optional fields — only included once created in SF object
